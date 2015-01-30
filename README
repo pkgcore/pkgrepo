@@ -1,0 +1,7 @@
+USE AT YOUR OWN RISK.
+
+This repo contains various ebuild hacks and tests targeting Gentoo package
+managers. It is used to check standards compliance, test for bugs, and other
+package manager related development. None of the ebuilds in this repo are
+meant to be permanently installed on a system and some could even have
+unexpected side effects if built or installed.
