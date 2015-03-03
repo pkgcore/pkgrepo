@@ -1,7 +1,6 @@
 EAPI=6
 
 DESCRIPTION="Check in_iuse implementation"
-KEYWORDS="~amd64"
 SLOT="0"
 IUSE="+foo -bar foobar"
 
