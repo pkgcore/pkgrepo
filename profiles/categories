@@ -1,3 +1,4 @@
 eapi6
 merge
+pkgcheck
 sandbox
