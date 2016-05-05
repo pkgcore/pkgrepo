@@ -7,4 +7,4 @@ SLOT="0"
 S=${WORKDIR}
 
 touch /foobar || die
-echo "sandbox not working in global scope!" >&2
+eerror "sandbox not working in global scope!"
