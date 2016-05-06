@@ -1,5 +1,6 @@
 bash
 eapi
+eapi0
 eapi6
 merge
 pkgcheck
