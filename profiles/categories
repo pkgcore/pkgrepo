@@ -3,4 +3,5 @@ eapi
 eapi6
 merge
 pkgcheck
+pkgcore
 sandbox
