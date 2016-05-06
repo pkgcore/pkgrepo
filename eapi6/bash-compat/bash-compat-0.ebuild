@@ -8,4 +8,5 @@ SLOT=0
 
 src_install() {
 	[[ -z ${BASH_COMPAT} ]] && die "BASH_COMPAT not defined in phase scope"
+	"${FILESDIR}"/test.sh || die "BASH_COMPAT shouldn't be exported to spawned scripts"
 }
