@@ -1,13 +1,8 @@
 EAPI=5
 
-DESCRIPTION=""
-HOMEPAGE=""
-SRC_URI=""
-
-LICENSE=""
+DESCRIPTION="singular OR dep in package deps"
 SLOT="0"
-KEYWORDS=""
-IUSE=""
+KEYWORDS="~amd64"
 
 DEPEND="|| ( sys-libs/glibc sys-libs/libcap )
 	|| ( sys-libs/glibc )
