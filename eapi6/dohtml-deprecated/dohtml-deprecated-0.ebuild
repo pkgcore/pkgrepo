@@ -7,6 +7,7 @@ SLOT="0"
 S=${WORKDIR}
 
 src_prepare() {
+	default
 	echo "deprecated" > deprecated.html
 }
 
