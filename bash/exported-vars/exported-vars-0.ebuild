@@ -4,15 +4,15 @@ KEYWORDS="~amd64"
 
 S=${WORKDIR}
 
-GLOBAL_VARS=$(compgen -v)
-PHASES=( src_prepare src_configure src_compile src_test src_install )
+__GLOBAL_VARS=$(compgen -v)
+__PHASES=( src_prepare src_configure src_compile src_test src_install )
 
 # Accessible variable lists are outputted to files named ${PHASE_NAME}-vars,
 # ${PHASE_NAME}-spawned-vars, and global-vars in ${S}.
-for phase in "${PHASES[@]}"; do
-	eval "${phase}() {
+for __phase in "${__PHASES[@]}"; do
+	eval "${__phase}() {
 		compgen -v > \"\${S}\"/\${FUNCNAME[0]}-vars
-		echo \${GLOBAL_VARS} | tr ' ' '\n' > \"\${S}\"/global-vars
+		echo \${__GLOBAL_VARS} | tr ' ' '\n' > \"\${S}\"/global-vars
 		\${FILESDIR}/test.sh /\${FUNCNAME[0]}
 	}"
 done
