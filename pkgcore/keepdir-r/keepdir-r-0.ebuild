@@ -1,4 +1,4 @@
-EAPI=5
+EAPI=6
 
 DESCRIPTION="Recursive keepdir support"
 SLOT="0"

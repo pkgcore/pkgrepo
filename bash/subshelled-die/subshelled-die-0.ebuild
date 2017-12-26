@@ -1,4 +1,4 @@
-EAPI=5
+EAPI=6
 
 DESCRIPTION="Test dying in a subshell"
 SLOT="0"
