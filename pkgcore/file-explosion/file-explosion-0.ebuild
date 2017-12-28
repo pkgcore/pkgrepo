@@ -9,7 +9,7 @@ S=${WORKDIR}
 gen_files() {
 	numfiles=${1:-5000}
 	for n in $(seq 1 ${numfiles}) ; do
-		dd if=/dev/urandom of=file$( printf %03d "$n" ).bin bs=1024 count=1 &>/dev/null
+		dd if=/dev/urandom of=file$( printf %04d "$n" ).bin bs=1024 count=1 &>/dev/null
 	done
 }
 
