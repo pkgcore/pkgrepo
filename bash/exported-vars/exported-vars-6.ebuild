@@ -6,9 +6,7 @@ KEYWORDS="~amd64"
 
 S=${WORKDIR}
 
-set -o posix
-__GLOBAL_VARS=$(set)
-set +o posix
+__GLOBAL_VARS=$(set -o posix; set)
 __PHASES=( src_prepare src_configure src_compile src_test src_install )
 
 # Accessible variable lists are outputted to files named ${PHASE_NAME}-vars,
@@ -16,9 +14,7 @@ __PHASES=( src_prepare src_configure src_compile src_test src_install )
 for __phase in "${__PHASES[@]}"; do
 	eval "${__phase}() {
 		default
-		set -o posix
-		set > \"\${S}\"/\${FUNCNAME[0]}-vars
-		set +o posix
+		(set -o posix; set) > \"\${S}\"/\${FUNCNAME[0]}-vars
 		echo \${__GLOBAL_VARS} | tr ' ' '\n' > \"\${S}\"/global-vars
 		\${FILESDIR}/test.sh /\${FUNCNAME[0]}
 	}"
