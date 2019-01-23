@@ -6,9 +6,14 @@ KEYWORDS="~amd64 ~x86"
 
 S="${WORKDIR}"
 
+_zombie_loop() {
+	while true; do
+		sleep 1
+		eqawarn "died in a subshell and didn't stop main bash process"
+	done
+}
+
 src_install() {
-	#die "regular die"
-	#foo=$(echo $(echo $(echo foo; die "dying in a subshell")));
-	sleep 600 | ( false || die "dying in a subshell" )
-	echo "continued processing"
+	_zombie_loop | ( false || die "dying in a subshell" )
+	die "continued processing"
 }
