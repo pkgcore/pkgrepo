@@ -11,8 +11,12 @@ __PHASES=( src_prepare src_configure src_compile src_test src_install )
 # ${PHASE_NAME}-spawned-vars, and global-vars in ${S}.
 for __phase in "${__PHASES[@]}"; do
 	eval "${__phase}() {
+		unset __PHASES __phase
+		if [[ ! -e \"\${S}\"/global-vars ]]; then
+			echo \${__GLOBAL_VARS} | tr ' ' '\n' > \"\${S}\"/global-vars
+			unset __GLOBAL_VARS
+		fi
 		(set -o posix; set) > \"\${S}\"/\${FUNCNAME[0]}-vars
-		echo \${__GLOBAL_VARS} | tr ' ' '\n' > \"\${S}\"/global-vars
 		\${FILESDIR}/test.sh /\${FUNCNAME[0]}
 	}"
 done
