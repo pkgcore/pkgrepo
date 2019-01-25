@@ -8,9 +8,10 @@ S=${WORKDIR}
 
 src_prepare() {
 	default
-	mkdir -p {a..z}/{a..z}/{a..z}
+	time mkdir -p {a..z}/{a..z}/{a..z}
 }
 
 src_install() {
+	insinto /usr/share/${PN}
 	time doins -r *
 }
