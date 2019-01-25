@@ -20,9 +20,10 @@ src_prepare() {
 	# The number of created files defaults to 8000 (the USE default), build
 	# with a different USE flag to use a different number.
 	local num_files=${USE%% *}
-	gen_files ${num_files}
+	time gen_files ${num_files}
 }
 
 src_install() {
+	insinto /usr/share/${PN}
 	time doins *
 }
