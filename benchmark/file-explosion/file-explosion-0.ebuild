@@ -9,9 +9,8 @@ S=${WORKDIR}
 
 gen_files() {
 	numfiles=${1:-8000}
-	for n in $(seq 1 ${numfiles}) ; do
-		dd if=/dev/urandom of=file$( printf %04d "$n" ).bin bs=1024 count=1 &>/dev/null
-	done
+	dd if=/dev/urandom bs=$((numfiles * 1024)) count=1 2>/dev/null | \
+		split -b 1024 -d -a 4 - file
 }
 
 src_prepare() {
