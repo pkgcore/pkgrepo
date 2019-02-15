@@ -9,8 +9,10 @@ S=${WORKDIR}
 
 gen_files() {
 	numfiles=${1:-8000}
-	dd if=/dev/urandom bs=$((numfiles * 1024)) count=1 2>/dev/null | \
-		split -b 1024 -d -a 4 - file
+	maxsize=$((1024 ** 2))
+	splitsize=$((maxsize / numfiles))
+	dd if=/dev/urandom bs=${splitsize} count=${numfiles} 2>/dev/null | \
+		split -b ${splitsize} -d -a ${#numfiles} - file
 }
 
 src_prepare() {
@@ -19,6 +21,7 @@ src_prepare() {
 	# The number of created files defaults to 8000 (the USE default), build
 	# with a different USE flag to use a different number.
 	local num_files=${USE%% *}
+	einfo "Generating ${num_files} files"
 	time gen_files ${num_files}
 }
 
