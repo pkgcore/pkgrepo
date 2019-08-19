@@ -4,6 +4,5 @@ eapi0
 eapi5
 eapi6
 merge
-pkgcheck
 pkgcore
 sandbox
